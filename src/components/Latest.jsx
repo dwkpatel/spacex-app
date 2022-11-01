@@ -1,4 +1,6 @@
 import React from "react";
+import { useContext } from "react";
+import { LatestContext } from '../contexts/Contexts';
 import {
     AccordionItem,
     AccordionButton,
@@ -8,7 +10,8 @@ import {
     Divider
   } from '@chakra-ui/react'
 
-function Latest({title, latest}) {
+function Latest({title}) {
+    const latest = useContext(LatestContext);
     if (!latest) {
         return
     }
