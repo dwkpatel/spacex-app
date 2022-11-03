@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Credit to SpaceX API
+To learn more, check out their API: https://github.com/r-spacex/SpaceX-API
+
 ## Available Scripts
 
 In the project directory, you can run:
