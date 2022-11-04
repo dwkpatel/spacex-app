@@ -9,8 +9,8 @@ function LaunchData(launch) {
     }
 
     return  <div>
-                <span>Name: <b>{launch.value.name}</b></span><Divider/>
-                <span>Date: {launch.value.date_utc}</span><Divider/>
+                <span>Flight Name: <b>{launch.value.name}</b></span><Divider/>
+                <span>Flight Date: {launch.value.date_utc}</span><Divider/>
                 <span>Flight Number: {launch.value.flight_number}</span><Divider/>
             </div>;
 }

@@ -24,14 +24,14 @@ function Latest({title}) {
         <>
             <AccordionItem>
                 <h2>
-                    <AccordionButton>
-                        <Box flex='1' textAlign='left'>
+                    <AccordionButton _expanded={{ bg: 'tomato', color: 'white' }}>
+                        <Box flex='1' textAlign='center'>
                         {title}
                         </Box>
                         <AccordionIcon />
                     </AccordionButton>
                 </h2>
-                <AccordionPanel pb={4}>
+                <AccordionPanel pb={4} bg='teal'>
                     Name: {latest.name}<Divider/>
                     Date: {latest.date_utc}<Divider/>
                     Flight #: {latest.flight_number}<Divider/>

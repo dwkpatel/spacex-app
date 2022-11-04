@@ -40,28 +40,26 @@ function Upcoming({title}) {
     return (
         <>
             <AccordionItem>
-                <h2>
-                    <AccordionButton>
-                        <Box flex='1' textAlign='left'>
+                    <AccordionButton _expanded={{ bg: 'tomato', color: 'white' }}>
+                        <Box flex='1' textAlign='center'>
                         {title}
                         </Box>
                         <AccordionIcon />
                     </AccordionButton>
-                </h2>
-                <AccordionPanel pb={4}>
+                <AccordionPanel pb={4} bg='teal'>
                     {upcomingLaunches}
                 </AccordionPanel>
             </AccordionItem>
             <AccordionItem>
                 <h2>
-                    <AccordionButton>
-                        <Box flex='1' textAlign='left'>
+                    <AccordionButton _expanded={{ bg: 'tomato', color: 'white' }}>
+                        <Box flex='1' textAlign='center'>
                         Upcoming Launch Rockets
                         </Box>
                         <AccordionIcon />
                     </AccordionButton>
                 </h2>
-                <AccordionPanel pb={4}>
+                <AccordionPanel pb={4} bg='teal'>
                     {upcomingLaunchRockets}
                 </AccordionPanel>
             </AccordionItem>

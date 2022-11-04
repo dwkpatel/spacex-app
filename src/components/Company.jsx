@@ -12,27 +12,18 @@ function Company({title, company}) {
     if (!company) {
         return
     }
-    // const crewList = company.crew.map((obj, index) => {
-    //     return <div key={index}>{obj.role}</div>
-    // })
     return (
         <>
             <AccordionItem>
                 <h2>
-                    {title}
-                </h2>
-            </AccordionItem>
-
-            <AccordionItem>
-                <h2>
-                    <AccordionButton>
-                        <Box flex='1' textAlign='left'>
-                        Company Information
+                    <AccordionButton _expanded={{ bg: 'tomato', color: 'white' }}>
+                        <Box flex='1' textAlign='center'>
+                            {title}
                         </Box>
                         <AccordionIcon />
                     </AccordionButton>
                 </h2>
-                <AccordionPanel pb={4}>
+                <AccordionPanel pb={4} bg='teal'>
                     <a href={company.links.flickr} target="_blank" rel="noreferrer">Official SpaceX Photos</a><Divider/>
                     Address: {company.headquarters.address}, {company.headquarters.city}, {company.headquarters.state}<Divider/>
                     Founder: {company.founder}<Divider/>
