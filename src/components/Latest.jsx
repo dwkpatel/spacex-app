@@ -9,6 +9,7 @@ import {
     Box,
     Divider
   } from '@chakra-ui/react'
+import { format } from 'date-fns';
 
 function Latest({title}) {
     const latest = useContext(LatestContext);
@@ -19,6 +20,7 @@ function Latest({title}) {
     const crewList = latest.crew.map((obj, index) => {
         return <span key={index}> {obj.role}, </span>
     })
+    const flightDate = format(new Date(latest.date_utc), 'MM/dd/yyyy HH:MM:SS');
 
     return (
         <>
@@ -33,11 +35,11 @@ function Latest({title}) {
                 </h2>
                 <AccordionPanel pb={4} bg='teal'>
                     Name: {latest.name}<Divider/>
-                    Date: {latest.date_utc}<Divider/>
+                    Date: {flightDate}<Divider/>
                     Flight #: {latest.flight_number}<Divider/>
                     Crew: {crewList}<Divider/>
                     Details: {latest.details}<Divider/>
-                    Link: <a href={latest.links.wikipedia}>Wikipedia</a><Divider/>
+                    <a href={latest.links.wikipedia}>Wikipedia Link</a><Divider/>
                 </AccordionPanel>
             </AccordionItem>
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { NumericFormat } from 'react-number-format';
+import { format } from 'date-fns'
 import {
     Divider
   } from '@chakra-ui/react'
@@ -16,12 +17,12 @@ function RocketData(rocket) {
     const images = rocketImages.map((img, index) =>
         <ImageItem key={index} value={img} />
     );
-
+    const flightDate = format(new Date(rocket.value.first_flight), 'MM/dd/yyyy HH:MM:SS');
     return  <div>
                 <span>Name: <b>{rocket.value.name}</b></span><Divider/>
                 <span>Description: {rocket.value.description}</span><Divider/>
                 <span>Cost per Launch: <NumericFormat value={rocket.value.cost_per_launch} displayType={'text'} thousandSeparator={true} prefix={'$'} /></span><Divider/>
-                <span>First Flight: {rocket.value.first_flight}</span><Divider/>
+                <span>First Flight: {flightDate}</span><Divider/>
                 <span>Rocket Height (ft): {rocket.value.height.feet}</span><Divider/>
                 <span>Rocket Weight (lb): {rocket.value.mass.lb}</span><Divider/>
                 <span>{images}</span>
