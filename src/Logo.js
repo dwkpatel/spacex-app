@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, keyframes, usePrefersReducedMotion } from '@chakra-ui/react';
+import { Image, keyframes, usePrefersReducedMotion, Box } from '@chakra-ui/react';
 import logo from './spacex.png';
 
 const spin = keyframes`
@@ -14,5 +14,9 @@ export const Logo = props => {
     ? undefined
     : `${spin} infinite 20s linear`;
 
-  return <Image animation={animation} src={logo} {...props} />;
+  return (
+      <Box maxW='150px' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+        <Image src={logo} {...props} />
+      </Box>
+  );
 };

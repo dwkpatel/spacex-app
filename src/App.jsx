@@ -7,6 +7,7 @@ import { LatestContext } from './contexts/Contexts';
 import loadable from '@loadable/component';
 import SearchBar from "./components/SearchBar";
 import spacex from "./api/spacex";
+import { Logo } from "./Logo";
 
 /*  To avoid large bundles, Code Splitting / loadable components are used as an efficient way to reduce the bundle size.
     It speeds up the loading of your application and reduces the payload size of your application. Also read React.lazy
@@ -70,6 +71,7 @@ function App() {
 
     return (
         <ChakraProvider theme={theme}>
+            <Logo/>
             <BrowserRouter>
                 <Accordion defaultIndex={[0]} allowToggle>
                     <SearchBar title="SpaceX Company" searchTitle="Search SpaceX"/>
