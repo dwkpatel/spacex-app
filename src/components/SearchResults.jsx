@@ -8,14 +8,13 @@ import {
   } from '@chakra-ui/react'
 import RocketData from "./RocketData";
 
-function SearchResults({title, searchResults}) {
+function SearchResults({title, searchResults, count}) {
     if (!searchResults) {
         return
     }
     const rocketListItems = searchResults.map((obj, index) =>
         <RocketData key={index} value={obj} />
     );
-
     return (
         <>
             <AccordionItem>
@@ -29,6 +28,7 @@ function SearchResults({title, searchResults}) {
                     </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4} bg='teal'>
+                    <h2>Search Result Count: {count}</h2>
                     {rocketListItems}
                 </AccordionPanel>
             </AccordionItem>

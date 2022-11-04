@@ -8,8 +8,7 @@ import {
     AccordionButton,
     AccordionPanel,
     AccordionIcon,
-    Box,
-    Divider
+    Box
   } from '@chakra-ui/react'
 
 function Upcoming({title}) {

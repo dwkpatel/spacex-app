@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route, Link} from "react-router-dom";
+import { BrowserRouter} from "react-router-dom";
 import { ChakraProvider, Accordion, theme } from '@chakra-ui/react'
 import { MultipleContext } from './contexts/Contexts';
 import { LatestContext } from './contexts/Contexts';
@@ -14,7 +14,6 @@ import spacex from "./api/spacex";
 const Company = loadable(() => import('./components/Company'));
 const Latest = loadable(() => import('./components/Latest'));
 const Rockets = loadable(() => import('./components/Rockets'));
-const SearchResults = loadable(() => import('./components/SearchResults'));
 const Upcoming = loadable(() => import('./components/Upcoming'));
 
 function App() {
@@ -26,16 +25,7 @@ function App() {
         then that function is introducing a side effect — the global variable doesn’t belong to the scope of the current function.
         callback argument is a function that puts the side-effect logic based on dependencies (props or state values).
     */
-    useEffect(() => {
-        getSearchResults('')
-    }, [])
 
-    const getSearchResults = async term => {
-        const response = await spacex.get(`/v4/rockets`, { 'query': { 'name': term} });
-        // update state to store component state, props values
-        setSpaceXData({ rocketsDataSearch: response.data });
-    }
-    
     useEffect(() => {
         // callback
         const fetchData = async () => {
@@ -57,9 +47,6 @@ function App() {
     if (spacexData.rocketsData) {
         console.log("rocketsData", spacexData.rocketsData);
     }
-    if (spacexData.rocketsDataSearch) {
-        console.log("rocketsDataSearch", spacexData.rocketsDataSearch);
-    }
     if (spacexData.upcoming) {
         console.log("upcoming", spacexData.upcoming);
     }
@@ -77,7 +64,7 @@ function App() {
         <ChakraProvider theme={theme}>
             <BrowserRouter>
                 <Accordion defaultIndex={[0]} allowToggle>
-                    <SearchBar title="SpaceX Company" searchTitle="Search SpaceX" onSearchBarChange={getSearchResults} searchResults={spacexData.rocketsDataSearch}/>
+                    <SearchBar title="SpaceX Company" searchTitle="Search SpaceX"/>
 
                     <Company title="Company Information" company={spacexData.companyData}/>
 
@@ -96,9 +83,6 @@ function App() {
                         <Rockets title="Latest Mission Rocket"/>
                     </MultipleContext.Provider>
 
-                    <Routes>
-                        <Route path="/" exact element={<SearchResults title="Search Results" searchResults={spacexData.rocketsDataSearch}/>}/>
-                    </Routes>
                 </Accordion>
             </BrowserRouter>
         </ChakraProvider>
