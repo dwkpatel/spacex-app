@@ -31,8 +31,16 @@ function App() {
         const fetchData = async () => {
             const company = await spacex.get(`/v4/company`);
             const latest = await spacex.get(`/v5/launches/latest`);
-            const rockets = await spacex.get(`/v4/rockets`, { 'query': { 'name': 'falcon 1'} });
-            const upcoming = await spacex.post(`/v5/launches/query`, { 'query': { 'upcoming': true } });
+            const rockets = await spacex.get(`/v4/rockets`, { 'query': { 'name': 'falcon'} });
+            const upcoming = await spacex.post(`/v5/launches/query`, {
+                'query': { 'upcoming': true }, 
+                "options" : {
+                    "limit": 30,
+                    "sort":{
+                        "date_utc":"asc"
+                    }
+                }
+             });
             
             // update state to store component state, props values
             setSpaceXData({ companyData: company.data, latestData: latest.data, rocketsData: rockets.data, upcoming: upcoming.data.docs });
